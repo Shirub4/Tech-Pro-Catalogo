@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071a33" />
+  <title>Catálogo Tech Pro</title>
+  <link rel="stylesheet" href="./css/style.css?v=20260722-escolhatipo1" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="brand">
+        <div class="brand-mark">TP</div>
+        <div>
+          <h1 id="brandName">Tech Pro</h1>
+          <p id="brandSubtitle">Escolha os itens e envie sua seleção</p>
+        </div>
+      </div>
+      <a class="admin-link" href="./admin.html">Área administrativa</a>
+    </div>
+  </header>
+
+  <main class="container page-content">
+    <section class="hero-card">
+      <div>
+        <span class="eyebrow">CATÁLOGO INTERATIVO</span>
+        <h2>Escolha de forma rápida e simples</h2>
+        <p>Use os botões de quantidade, confira sua seleção e gere um PDF para enviar pelo WhatsApp.</p>
+      </div>
+
+    </section>
+
+    <section class="filters-card">
+      <label class="search-field">
+        <span>Buscar</span>
+        <input id="searchInput" type="search" placeholder="Digite o nome de um item..." autocomplete="off" />
+      </label>
+      <div id="groupFilters" class="group-filters" aria-label="Filtrar por grupo"></div>
+    </section>
+
+    <section>
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">ITENS DISPONÍVEIS</span>
+          <h2 id="catalogTitle">Todos os itens</h2>
+        </div>
+        <span id="itemsResultCount" class="muted-text"></span>
+      </div>
+      <div id="catalogGrid" class="catalog-grid"></div>
+      <div id="emptyCatalog" class="empty-state hidden">
+        <strong>Nenhum item encontrado.</strong>
+        <p>Tente outra busca ou selecione outro grupo.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="selection-dock" aria-label="Resumo da escolha">
+    <div class="selection-dock-metric">
+      <span>Valor</span>
+      <strong id="floatingSelectionValue">R$ 0,00</strong>
+    </div>
+    <div class="selection-dock-metric">
+      <span>GB</span>
+      <strong id="floatingSelectionGb">0 GB</strong>
+    </div>
+    <button id="openSelectionBtn" class="primary-button cart-button selection-dock-button" type="button">
+      Minha escolha <span id="selectionCount" class="count-badge">0</span>
+    </button>
+  </div>
+
+  <div id="selectionOverlay" class="overlay hidden" aria-hidden="true">
+    <aside class="selection-panel" role="dialog" aria-modal="true" aria-labelledby="selectionTitle">
+      <div class="panel-header">
+        <div>
+          <span class="eyebrow">RESUMO</span>
+          <h2 id="selectionTitle">Minha escolha</h2>
+        </div>
+        <button id="closeSelectionBtn" class="icon-button" type="button" aria-label="Fechar">×</button>
+      </div>
+
+      <div id="selectionList" class="selection-list"></div>
+      <div id="emptySelection" class="empty-state compact">
+        <strong>Sua seleção está vazia.</strong>
+        <p>Adicione pelo menos um item.</p>
+      </div>
+
+      <div class="selection-totals">
+        <div class="selection-total">
+          <span>Total estimado</span>
+          <strong id="selectionTotal">R$ 0,00</strong>
+        </div>
+        <div class="selection-total">
+          <span>Total acumulado em GB</span>
+          <strong id="selectionGbTotal">0 GB</strong>
+        </div>
+      </div>
+
+      <form id="orderForm" class="customer-form">
+        <h3>Seus dados</h3>
+        <div class="form-grid">
+          <label>
+            <span>Nome *</span>
+            <input id="customerName" name="customerName" required maxlength="100" placeholder="Seu nome" />
+          </label>
+          <label>
+            <span>Telefone</span>
+            <input id="customerPhone" name="customerPhone" maxlength="30" placeholder="(22) 99999-9999" />
+          </label>
+          <label class="full-width">
+            <span>Observações</span>
+            <textarea id="customerNotes" name="customerNotes" rows="3" maxlength="500" placeholder="Cor, modelo, detalhes ou dúvidas..."></textarea>
+          </label>
+        </div>
+        <p class="privacy-note">Ao continuar, sua seleção será registrada para facilitar o atendimento.</p>
+        <button id="sendOrderBtn" class="whatsapp-button" type="submit">
+          Gerar PDF e enviar pelo WhatsApp
+        </button>
+        <button id="downloadPdfBtn" class="secondary-button" type="button">
+          Apenas baixar o PDF
+        </button>
+      </form>
+    </aside>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+
+  <script type="module" src="./js/catalog.js?v=20260722-pdfgrupos1"></script>
+</body>
+</html>
